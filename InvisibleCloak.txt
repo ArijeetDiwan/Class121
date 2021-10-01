@@ -1,0 +1,65 @@
+cloak meaning cloth
+cv2.imread () to read the image
+cv2- computer  
+-------------------------------------------------------------------------------------------------------------------------------------
+ Use cv2.cvtColor() to convert the image from BGR to HSV(Hue,saturation,value). Conversion can also be done from BGR to GrayScale.
+
+cvtColor() takes two parameters as (input_image, type of conversion)
+
+
+
+
+
+
+
+Finally, we’ll create the mask of the image(which will indicate only the desired color or the one whose input is given and rest all the colors will be erased). This will be done by using inRange function which will take the input as (image, lower_range,higher_range). The range will give the color to be shown. Hence we’ve to give specify the lower and upper range of the color we want to detect.For example range of red color we are detecting is  [0,100,100] to [5,255,255]. The code will be as shown:
+
+lower_range = np.array([0,100,100])
+upper_range = np.array([5,255,255])
+mask = cv2.inRange(hsv, lower_range, upper_range)
+5. Now show the input image as well as the mask one using cv2.imshow() which takes two parameters as (window_name, variable_holding_image)
+
+cv2.imshow('image_window_name', image)
+cv2.imshow('mask_window_name', mask)
+6. Now decide the image availability time through cv2.waitkey() which takes the time parameters in milliseconds. 0 will wait infinitely.At last close the window through cv2.destroyAllWindows() function.
+
+
+
+Step1:
+Input: Capture video through webcam.
+Step 2:
+Read the video stream in image frames.
+Step 3:
+Convert the imageFrame in BGR(RGB color space represented as three matrices of red, green and blue with integer values from 0 to 255) to HSV(hue-saturation-value) color space.
+Hue
+describes a color in terms of
+saturation
+, represents the amount of gray color in that color and
+value
+describes the brightness or intensity of the color. This can be represented as three matrices in the range of 0-179, 0-255 and 0-255 respectively.
+Step 4:
+Define the range of each color and create the corresponding mask.
+Step 5:
+Morphological Transform: Dilation, to remove noises from the images.
+Step 6:
+bitwise_and between the image frame and mask is performed to specificaly detect that particular color and discrad others.
+Step 7:
+Create contour for the individual colors to display the detected colored region distinguishly.
+Step 8:
+Output: Detection of the colors in real-time.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
